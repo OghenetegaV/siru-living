@@ -58,3 +58,9 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (min-width: 768px) {
+  .project-image {
+    transform: scale(1.04);
+    transition: transform 6s ease-out;
+  }
+}

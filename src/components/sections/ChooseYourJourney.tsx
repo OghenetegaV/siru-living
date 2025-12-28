@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import FadeUp from "@/components/motion/FadeUp";
+import Button from "../ui/Button";
 
 const journeys = [
   {
@@ -87,22 +88,11 @@ export default function ChooseYourJourney() {
                   </p>
 
                   {/* CTA */}
-                  <a
-                    href="/services"
-                    className="
-                      mt-6 inline-flex items-center
-                      rounded-[8px]
-                      border border-[var(--color-brand-brown)]
-                      px-5 py-2
-                      text-[12px] font-medium
-                      text-[var(--color-brand-brown)]
-                      transition-colors
-                      hover:bg-[var(--color-brand-brown)]
-                      hover:text-white
-                    "
-                  >
-                    Learn More
-                  </a>
+                    <div className="mt-6">
+                    <Button href="/services" variant="secondary">
+                        Learn More
+                    </Button>
+                    </div>
 
                 </div>
               </div>

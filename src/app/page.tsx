@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import WhoWeAre from "@/components/sections/WhoWeAre";
 import ChooseYourJourney from "@/components/sections/ChooseYourJourney";
+import FeaturedProjects from "@/components/sections/FeaturedProjects";
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
       <Hero />
       <WhoWeAre />
       <ChooseYourJourney />
+      <FeaturedProjects />
     </>
   );
 }
