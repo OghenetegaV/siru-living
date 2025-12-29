@@ -23,13 +23,13 @@ export default function Header() {
             alt="Siru Living"
             width={180}
             height={50}
-            className="h-[50px] lg:h-[90px] w-auto"
+            className="h-[40px] lg:h-[80px] w-auto"
             priority
           />
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-10 lg:gap-28 text-[16px] lg:text-[18px]">
+          <ul className="hidden md:flex items-center gap-10 lg:gap-24 text-[16px] lg:text-[18px]">
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about">About</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services">Services</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio">Portfolio</Link></li>
