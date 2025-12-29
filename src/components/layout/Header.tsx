@@ -26,11 +26,11 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-10 lg:gap-28 text-[16px] lg:text-[18px]">
-            <li><Link className="hover:text-brand-brown" href="/about">About</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/services">Services</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/portfolio">Portfolio</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/blog">Blog</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/contact">Contact</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about">About</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services">Services</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio">Portfolio</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog">Blog</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact">Contact</Link></li>
           </ul>
 
           {/* Desktop CTA */}
@@ -58,11 +58,11 @@ export default function Header() {
       {open && (
         <div id="mobile-menu" className="md:hidden bg-white border-t">
           <ul className="flex flex-col gap-6 px-6 py-8 text-[18px]">
-            <li><Link className="hover:text-brand-brown" href="/about">About</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/services">Services</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/portfolio">Portfolio</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/blog">Blog</Link></li>
-            <li><Link className="hover:text-brand-brown" href="/contact">Contact</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about">About</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services">Services</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio">Portfolio</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog">Blog</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact">Contact</Link></li>
             <li className="pt-2">
               <Button href="/contact" className="w-full">
                 Start Your Journey

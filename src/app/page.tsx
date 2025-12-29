@@ -5,6 +5,8 @@ import FeaturedProjects from "@/components/sections/FeaturedProjects";
 import Testimonials from "@/components/sections/Testimonials";
 import StartYourJourney from "@/components/sections/StartYourJourney";
 import BlogPreview from "@/components/sections/BlogPreview";
+import MailingList from "@/components/sections/MailingList";
+import FAQ from "@/components/sections/FAQ";
 
 export default function HomePage() {
   return (
@@ -16,6 +18,8 @@ export default function HomePage() {
       <Testimonials />
       <StartYourJourney />
       <BlogPreview />
+      <MailingList />
+      <FAQ />
     </>
   );
 }
