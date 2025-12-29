@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 import Hamburger from "@/components/ui/Hamburger";
 import Button from "@/components/ui/Button";
 
@@ -17,7 +18,7 @@ export default function Header() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <img
+            <Image
               src="/assets/logo/logo.svg"
               alt="Siru Living"
               className="h-[50px] lg:h-[90px] w-auto"
@@ -35,7 +36,7 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button href="/contact">
+            <Button href="/call-to-action">
               Start Your Journey
             </Button>
           </div>
@@ -64,7 +65,7 @@ export default function Header() {
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog">Blog</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact">Contact</Link></li>
             <li className="pt-2">
-              <Button href="/contact" className="w-full">
+              <Button href="/call-to-action" className="w-full">
                 Start Your Journey
               </Button>
             </li>

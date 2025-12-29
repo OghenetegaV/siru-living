@@ -31,7 +31,7 @@ export default function Hero() {
                 Explore Our Services
               </Button>
 
-              <Button href="/contact" variant="secondary">
+              <Button href="/call-to-action" variant="secondary">
                 Get Started Today
               </Button>
             </div>

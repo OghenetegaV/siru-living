@@ -19,12 +19,35 @@ export default function Button({
   className = "",
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center h-[43px] px-6 rounded-[8px] text-[16px] font-medium transition-colors";
+    `
+    inline-flex items-center justify-center
+    h-[43px] px-6
+    rounded-[8px]
+    text-[16px] font-medium
+    transition-all duration-200 ease-out
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-[var(--color-brand-brown)]
+    focus-visible:ring-offset-2
+    active:scale-[0.97]
+    `;
 
   const variants = {
-    primary: "bg-[var(--color-brand-brown)] text-white font-medium",
-    secondary:
-      "border border-[var(--color-brand-brown)] text-[var(--color-brand-brown)] font-medium",
+    primary: `
+      bg-[var(--color-brand-brown)]
+      text-white
+      hover:bg-[color-mix(in_srgb,var(--color-brand-brown),black_10%)]
+      hover:-translate-y-[1px]
+      active:translate-y-0
+    `,
+    secondary: `
+      border border-[var(--color-brand-brown)]
+      text-[var(--color-brand-brown)]
+      bg-transparent
+      hover:bg-[var(--color-brand-brown)]/10
+      hover:-translate-y-[1px]
+      active:translate-y-0
+    `,
   };
 
   const styles = `${base} ${variants[variant]} ${className}`;

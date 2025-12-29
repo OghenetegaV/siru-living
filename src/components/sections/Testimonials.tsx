@@ -86,7 +86,7 @@ export default function Testimonials() {
                     }}
                   >
                     <Image
-                      src="/assets/images/testimonials/quote-icon.png"
+                      src="/assets/icons/quote-icon.svg"
                       alt="quotation icon"
                       width={42}
                       height={42}

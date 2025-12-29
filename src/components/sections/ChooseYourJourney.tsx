@@ -43,7 +43,7 @@ export default function ChooseYourJourney() {
 
           <FadeUp delay={0.1}>
             <p className="mt-4 text-[22px] text-[var(--color-ink)]/80">
-              Whether you're seeking clarity, momentum, or full guidance,
+              Whether you &apos; re seeking clarity, momentum, or full guidance,
               there’s a journey designed to support you.
             </p>
           </FadeUp>
