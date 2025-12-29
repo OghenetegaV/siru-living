@@ -18,11 +18,14 @@ export default function Header() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <Image
-              src="/assets/logo/logo.svg"
-              alt="Siru Living"
-              className="h-[50px] lg:h-[90px] w-auto"
-            />
+          <Image
+            src="/assets/logo/logo.svg"
+            alt="Siru Living"
+            width={180}
+            height={50}
+            className="h-[50px] lg:h-[90px] w-auto"
+            priority
+          />
           </Link>
 
           {/* Desktop Nav */}
