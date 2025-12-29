@@ -1,25 +1,40 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import {
+  ReactNode,
+  ButtonHTMLAttributes,
+  AnchorHTMLAttributes,
+} from "react";
 
 type ButtonVariant = "primary" | "secondary";
 
-interface ButtonProps {
+interface BaseProps {
   children: ReactNode;
-  href?: string;
-  onClick?: () => void;
   variant?: ButtonVariant;
   className?: string;
 }
 
+/* Button props (for <button>) */
+type NativeButtonProps = BaseProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never;
+  };
+
+/* Link props (for <a>) */
+type LinkButtonProps = BaseProps &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+  };
+
+type ButtonProps = NativeButtonProps | LinkButtonProps;
+
 export default function Button({
   children,
-  href,
-  onClick,
   variant = "primary",
   className = "",
+  href,
+  ...props
 }: ButtonProps) {
-  const base =
-    `
+  const base = `
     inline-flex items-center justify-center
     h-[43px] px-6
     rounded-[8px]
@@ -30,7 +45,7 @@ export default function Button({
     focus-visible:ring-[var(--color-brand-brown)]
     focus-visible:ring-offset-2
     active:scale-[0.97]
-    `;
+  `;
 
   const variants = {
     primary: `
@@ -52,16 +67,21 @@ export default function Button({
 
   const styles = `${base} ${variants[variant]} ${className}`;
 
+  /* LINK */
   if (href) {
     return (
-      <Link href={href} className={styles}>
+      <Link href={href} className={styles} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}>
         {children}
       </Link>
     );
   }
 
+  /* BUTTON */
   return (
-    <button onClick={onClick} className={styles}>
+    <button
+      className={styles}
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+    >
       {children}
     </button>
   );
