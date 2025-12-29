@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 export default function ContactPage() {
   return (
     <main
-      className="w-full bg-[var(--color-beige)] relative"
+      className="w-full bg-[var(--color-beige)] relative py-24"
       aria-labelledby="contact-heading"
     >
         {/* Decorative chair image — behind content */}

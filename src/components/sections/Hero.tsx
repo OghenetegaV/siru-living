@@ -7,7 +7,7 @@ import ImageReveal from "@/components/motion/ImageReveal";
 
 export default function Hero() {
   return (
-    <section className="w-full bg-[var(--color-beige)] pb-24">
+    <section className="w-full bg-[var(--color-beige)] py-32">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
 
         {/* Text block */}

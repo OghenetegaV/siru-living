@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 export default function ShortHaulBookingPage() {
   return (
     <main className="w-full bg-[var(--color-beige)]">
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-12 pb-24">
+      <section className="mx-auto max-w-[1440px] px-6 lg:px-12 py-24">
 
         <div className="mx-auto max-w-[720px] bg-white rounded-[16px] p-10 sm:p-12 lg:p-14 shadow-sm">
 

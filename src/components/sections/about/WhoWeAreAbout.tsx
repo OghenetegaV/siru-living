@@ -4,7 +4,7 @@ import FadeUp from "@/components/motion/FadeUp";
 export default function AboutPage() {
   return (
     <main className="w-full bg-[var(--color-beige)]">
-      <section className="mx-auto max-w-[1440px] px-6 lg:px-12 py-12">
+      <section className="mx-auto max-w-[1440px] px-6 lg:px-12 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 items-start">
 
           {/* LEFT — Images */}

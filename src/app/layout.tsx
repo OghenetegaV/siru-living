@@ -97,7 +97,7 @@ export default function RootLayout({
     <html lang="en" className={bricolage.variable}>
       <body className="font-sans antialiased">
         <Header />
-        <main className="pt-[120px]">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
