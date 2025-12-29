@@ -1,16 +1,36 @@
 "use client";
 
+import Image from "next/image";
 import FadeUp from "@/components/motion/FadeUp";
 import Button from "@/components/ui/Button";
+
+const steps = [
+  {
+    text: "We review your project details.",
+    icon: "/assets/icons/search-icon.svg",
+  },
+  {
+    text: "We recommend the best journey for you.",
+    icon: "/assets/icons/location-icon.svg",
+  },
+  {
+    text: "We arrange a discovery call.",
+    icon: "/assets/icons/phone-icon.svg",
+  },
+];
 
 export default function StartYourJourney() {
   return (
     <section className="w-full bg-[var(--color-beige)]">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-12 py-28">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch bg-white rounded-[16px] overflow-hidden">
+        {/* Card wrapper */}
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[16px] overflow-hidden">
 
-          {/* Left content */}
+          {/* Vertical divider (desktop only) */}
+          <div className="hidden lg:block absolute left-1/2 top-0 h-full w-px bg-[var(--color-brand-brown)]/50" />
+
+          {/* LEFT CONTENT */}
           <div className="p-10 lg:p-14 flex flex-col justify-between">
             <div>
               <FadeUp>
@@ -19,42 +39,55 @@ export default function StartYourJourney() {
                 </h2>
               </FadeUp>
 
+              {/* Horizontal line #1 */}
+              <div className="mt-4 h-px w-full bg-[var(--color-brand-brown)]/50" />
+
               <FadeUp delay={0.1}>
-                <p className="mt-4 text-[22px] leading-relaxed text-[var(--color-ink)]/80 max-w-[420px]">
+                <p className="mt-6 text-[22px] leading-relaxed text-[var(--color-ink)]/80 max-w-[420px]">
                   Tell us about your project, and we’ll guide you towards the
                   most suitable next step.
                 </p>
               </FadeUp>
 
+              {/* Horizontal line #2 */}
+              <div className="mt-6 h-px w-full bg-[var(--color-brand-brown)]/50" />
+
               <FadeUp delay={0.2}>
-                <div className="mt-8 border-t pt-6">
-                  <h3 className="text-[24px] font-semibold  tracking-wide text-[var(--color-ink)]">
+                <div className="mt-10">
+                  <h3 className="text-[24px] font-semibold text-[var(--color-ink)]">
                     What happens next?
                   </h3>
 
-                  <ul className="mt-4 space-y-3 text-[22px] text-[var(--color-ink)]/80">
-                    <li className="flex gap-3">
-                      <span className="font-medium text-[var(--color-brand-brown)]">1.</span>
-                      We review your project details.
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-medium text-[var(--color-brand-brown)]">2.</span>
-                      We recommend the best journey for you.
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-medium text-[var(--color-brand-brown)]">3.</span>
-                      We arrange a discovery call.
-                    </li>
-                  </ul>
+                    <ul className="mt-6 space-y-4 text-[22px] text-[var(--color-ink)]/80">
+                    {steps.map((step, index) => (
+                        <li key={index} className="flex items-start gap-4">
+                        <Image
+                            src={step.icon}
+                            alt=""
+                            width={22}
+                            height={22}
+                            className="mt-[4px] flex-shrink-0"
+                        />
+
+                        <span>
+                            <span className=" mr-2">
+                            {index + 1}.
+                            </span>
+                            {step.text}
+                        </span>
+                        </li>
+                    ))}
+                    </ul>
+
                 </div>
               </FadeUp>
             </div>
           </div>
 
-          {/* Right form */}
+          {/* RIGHT FORM */}
           <FadeUp delay={0.15}>
             <form
-              className="p-10 lg:p-14 bg-white flex flex-col gap-6"
+              className="p-10 lg:p-14 flex flex-col gap-6"
               aria-label="Start your journey form"
             >
               <div>
@@ -63,7 +96,14 @@ export default function StartYourJourney() {
                 </label>
                 <input
                   type="text"
-                  className="w-full rounded-[8px] border border-[var(--color-ink)]/20 px-4 py-3 text-[16px] focus:outline-none focus:border-[var(--color-brand-brown)]"
+                  required
+                  className="
+                    w-full rounded-[8px]
+                    border border-[var(--color-brand-brown)]/50
+                    px-4 py-3 text-[16px]
+                    focus:outline-none
+                    focus:ring-1 focus:ring-[var(--color-brand-brown)]
+                  "
                 />
               </div>
 
@@ -73,7 +113,14 @@ export default function StartYourJourney() {
                 </label>
                 <input
                   type="email"
-                  className="w-full rounded-[8px] border border-[var(--color-ink)]/20 px-4 py-3 text-[16px] focus:outline-none focus:border-[var(--color-brand-brown)]"
+                  required
+                  className="
+                    w-full rounded-[8px]
+                    border border-[var(--color-brand-brown)]/50
+                    px-4 py-3 text-[16px]
+                    focus:outline-none
+                    focus:ring-1 focus:ring-[var(--color-brand-brown)]
+                  "
                 />
               </div>
 
@@ -83,7 +130,14 @@ export default function StartYourJourney() {
                 </label>
                 <textarea
                   rows={4}
-                  className="w-full rounded-[8px] border border-[var(--color-ink)]/20 px-4 py-3 text-[16px] resize-none focus:outline-none focus:border-[var(--color-brand-brown)]"
+                  className="
+                    w-full rounded-[8px]
+                    border border-[var(--color-brand-brown)]/50
+                    px-4 py-3 text-[16px]
+                    resize-none
+                    focus:outline-none
+                    focus:ring-1 focus:ring-[var(--color-brand-brown)]
+                  "
                 />
               </div>
 
@@ -96,7 +150,6 @@ export default function StartYourJourney() {
           </FadeUp>
 
         </div>
-
       </div>
     </section>
   );
