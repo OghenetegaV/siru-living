@@ -3,18 +3,29 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
+interface FadeUpProps {
+  children: ReactNode;
+  delay?: number;
+  immediate?: boolean;
+}
+
 export default function FadeUp({
   children,
   delay = 0,
-}: {
-  children: ReactNode;
-  delay?: number;
-}) {
+  immediate = false,
+}: FadeUpProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-120px" }}
+      animate={immediate ? { opacity: 1, y: 0 } : undefined}
+      whileInView={
+        immediate ? undefined : { opacity: 1, y: 0 }
+      }
+      viewport={
+        immediate
+          ? undefined
+          : { once: true, margin: "-120px" }
+      }
       transition={{
         duration: 0.8,
         ease: [0.22, 1, 0.36, 1],

@@ -14,7 +14,7 @@ const journeys = [
       "Overcoming a design obstacle",
       "Expert input on key decisions",
     ],
-    href: "/call-to-action/short-haul",
+    href: "/services/short-haul",
   },
   {
     eyebrow: "Designer for a Day",
@@ -26,7 +26,7 @@ const journeys = [
       "Tangible progress in one day",
       "A balance of strategy and direction",
     ],
-    href: "/call-to-action/day-trip",
+    href: "/services/day-trip",
   },
   {
     eyebrow: "A fully guided design journey",
@@ -38,7 +38,7 @@ const journeys = [
       "Full project management",
       "Detailed, thoughtful delivery",
     ],
-    href: "/call-to-action/long-haul",
+    href: "/services/long-haul",
   },
 ];
 

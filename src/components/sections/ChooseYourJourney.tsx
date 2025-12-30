@@ -11,6 +11,7 @@ const journeys = [
     image: "/assets/images/journey/short-haul.png",
     description:
       "Short Haul is a light-touch design consultation service designed to help you find your bearings. Ideal if you're stuck, starting out, or simply want to sense-check ideas without long-term commitment.",
+      href:"/services/short-haul",
   },
   {
     title: "Designer for a Day",
@@ -18,6 +19,7 @@ const journeys = [
     image: "/assets/images/journey/designer-for-a-day.png",
     description:
       "Day Trip is a one-day design intensive that delivers clarity, structure, and tangible progress — fast. It’s for clients who want confident decisions without committing to a full long-haul journey.",
+      href:"/services/day-trip",
   },
   {
     title: "Long Haul",
@@ -25,6 +27,7 @@ const journeys = [
     image: "/assets/images/journey/long-haul.png",
     description:
       "For projects that need depth, coordination, and long-term thinking. Long Haul offers a complete end-to-end interior design service.",
+      href:"/services/long-haul",
   },
 ];
 
@@ -89,7 +92,7 @@ export default function ChooseYourJourney() {
 
                   {/* CTA */}
                     <div className="mt-6">
-                    <Button href="/services" variant="secondary">
+                    <Button href={item.href}variant="secondary">
                         Learn More
                     </Button>
                     </div>

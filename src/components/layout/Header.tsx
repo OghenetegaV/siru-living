@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const closeMenu = () => setOpen(false);
 
   return (
     <header className="w-full bg-white text-ink font-medium">
@@ -62,13 +63,13 @@ export default function Header() {
       {open && (
         <div id="mobile-menu" className="md:hidden bg-white border-t">
           <ul className="flex flex-col gap-6 px-6 py-8 text-[18px]">
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about">About</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services">Services</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio">Portfolio</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog">Blog</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact">Contact</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about" onClick={closeMenu}>About</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services" onClick={closeMenu}>Services</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio" onClick={closeMenu}>Portfolio</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog" onClick={closeMenu}>Blog</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact" onClick={closeMenu}>Contact</Link></li>
             <li className="pt-2">
-              <Button href="/call-to-action" className="w-full">
+              <Button href="/call-to-action" className="w-full" onClick={closeMenu}>
                 Start Your Journey
               </Button>
             </li>
