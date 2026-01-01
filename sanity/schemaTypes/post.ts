@@ -7,7 +7,7 @@ export default defineType({
 
   fields: [
     /* =====================
-       Core content
+       CORE CONTENT
        ===================== */
 
     defineField({
@@ -19,7 +19,7 @@ export default defineType({
 
     defineField({
       name: "slug",
-      title: "Slug",
+      title: "URL Slug",
       type: "slug",
       options: {
         source: "title",
@@ -34,7 +34,7 @@ export default defineType({
       type: "text",
       rows: 3,
       description:
-        "Short summary used on blog listings, previews, and SEO.",
+        "Short summary used on listings, previews, and search results.",
       validation: (Rule) => Rule.max(160),
     }),
 
@@ -42,16 +42,32 @@ export default defineType({
       name: "mainImage",
       title: "Featured Image",
       type: "image",
-      options: {
-        hotspot: true,
-      },
+      options: { hotspot: true },
     }),
 
     defineField({
       name: "body",
-      title: "Content",
+      title: "Article Content",
       type: "array",
-      of: [{ type: "block" }],
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal text", value: "normal" },
+            { title: "Heading 1", value: "h1" },
+            { title: "Heading 2", value: "h2" },
+            { title: "Heading 3", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [{ title: "Bullet list", value: "bullet" }],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
+          },
+        },
+      ],
     }),
 
     defineField({
@@ -61,9 +77,8 @@ export default defineType({
       of: [{ type: "reference", to: [{ type: "category" }] }],
     }),
 
-
     /* =====================
-       Publishing control
+       PUBLISHING
        ===================== */
 
     defineField({
@@ -86,35 +101,10 @@ export default defineType({
       type: "datetime",
       initialValue: () => new Date().toISOString(),
     }),
-
-    /* =====================
-       SEO (optional but powerful)
-       ===================== */
-
-    defineField({
-      name: "seo",
-      title: "SEO",
-      type: "object",
-      fields: [
-        {
-          name: "metaTitle",
-          title: "Meta title",
-          type: "string",
-          validation: (Rule) => Rule.max(60),
-        },
-        {
-          name: "metaDescription",
-          title: "Meta description",
-          type: "text",
-          rows: 3,
-          validation: (Rule) => Rule.max(160),
-        },
-      ],
-    }),
   ],
 
   /* =====================
-     Preview in Studio
+     PREVIEW
      ===================== */
 
   preview: {
@@ -123,8 +113,7 @@ export default defineType({
       media: "mainImage",
       status: "status",
     },
-    prepare(selection) {
-      const { title, media, status } = selection;
+    prepare({ title, media, status }) {
       return {
         title,
         media,

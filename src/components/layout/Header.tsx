@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header className="w-full bg-white text-ink font-medium">
       {/* Full-width nav bar */}
-      <nav className="w-full h-[120px]" aria-label="Primary navigation">
+      <nav className="w-full py-4" aria-label="Primary navigation">
         {/* Inner container */}
         <div className="mx-auto h-full flex items-center justify-between px-6 lg:px-24">
           
@@ -22,9 +22,9 @@ export default function Header() {
           <Image
             src="/assets/logo/logo.svg"
             alt="Siru Living"
-            width={180}
-            height={50}
-            className="h-[40px] lg:h-[80px] w-auto"
+            width={100}
+            height={100}
+            className="h-[50px] lg:h-[100px]"
             priority
           />
           </Link>
@@ -33,8 +33,8 @@ export default function Header() {
           <ul className="hidden md:flex items-center gap-10 lg:gap-24 text-[16px] lg:text-[18px]">
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about">About</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services">Services</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio">Portfolio</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog">Blog</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio">Projects</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog">Journal</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact">Contact</Link></li>
           </ul>
 
@@ -47,7 +47,7 @@ export default function Header() {
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden"
+            className="md:hidden cursor-default hover:cursor-pointer"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -65,8 +65,8 @@ export default function Header() {
           <ul className="flex flex-col gap-6 px-6 py-8 text-[18px]">
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/about" onClick={closeMenu}>About</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/services" onClick={closeMenu}>Services</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio" onClick={closeMenu}>Portfolio</Link></li>
-            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog" onClick={closeMenu}>Blog</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/portfolio" onClick={closeMenu}>Projects</Link></li>
+            <li><Link className="hover:text-[var(--color-brand-brown)]" href="/blog" onClick={closeMenu}>Journal</Link></li>
             <li><Link className="hover:text-[var(--color-brand-brown)]" href="/contact" onClick={closeMenu}>Contact</Link></li>
             <li className="pt-2">
               <Button href="/call-to-action" className="w-full" onClick={closeMenu}>
