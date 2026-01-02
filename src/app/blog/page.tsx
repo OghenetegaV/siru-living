@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import type { Image as SanityImage } from "sanity";
 
 import { sanityFetch } from "@/lib/sanity.fetch";
 import { POSTS_INDEX_QUERY } from "@/lib/sanity.queries";
@@ -17,7 +18,7 @@ type Post = {
   slug: { current: string };
   excerpt?: string;
   publishedAt?: string;
-  mainImage?: any;
+  mainImage?: SanityImage;
   categories?: Category[];
 };
 
@@ -60,10 +61,7 @@ export default async function BlogIndexPage() {
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => {
               const img = post.mainImage
-                ? urlFor(post.mainImage)
-                    .width(1200)
-                    .height(800)
-                    .url()
+                ? urlFor(post.mainImage).width(1200).height(800).url()
                 : null;
 
               return (
@@ -97,13 +95,15 @@ export default async function BlogIndexPage() {
                       </div>
                     ) : null}
 
-                    <p className="mt-3 text-[14px] text-[var(--color-ink)]/60">
-                      {new Date(post.publishedAt).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </p>
+                    {post.publishedAt && (
+                      <p className="mt-3 text-[14px] text-[var(--color-ink)]/60">
+                        {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </p>
+                    )}
 
                     <h2 className="text-[18px] font-semibold text-[var(--color-brand-brown)]">
                       {post.title}
@@ -115,9 +115,9 @@ export default async function BlogIndexPage() {
                       </p>
                     )}
 
-                    <h3 className="text-[16px] font-semibold text-right text-[var(--color-brand-brown)]/70 mt-6 group-hover:underline underline-offset-6 group-hover:text-[var(--color-brand-brown)]">
-                        Read More
-                      </h3>
+                    <h3 className="mt-6 text-[16px] font-semibold text-right text-[var(--color-brand-brown)]/70 group-hover:underline underline-offset-6 group-hover:text-[var(--color-brand-brown)]">
+                      Read More
+                    </h3>
                   </div>
                 </Link>
               );
