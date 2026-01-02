@@ -13,11 +13,9 @@ import { calculateReadingTime } from "@/lib/readingTime";
 
 import FadeUp from "@/components/motion/FadeUp";
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
+/* =========================
+   DATA TYPES
+   ========================= */
 
 type Post = {
   title: string;
@@ -35,7 +33,7 @@ type Post = {
    SEO METADATA
    ========================= */
 export async function generateMetadata(
-  { params }: PageProps
+  { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   const post = await sanityFetch<Post | null>({
     query: POST_BY_SLUG_QUERY,
@@ -45,14 +43,14 @@ export async function generateMetadata(
   if (!post) return {};
 
   return {
-    title: post.seo?.metaTitle || post.title,
-    description: post.seo?.metaDescription || post.excerpt,
+    title: post.seo?.metaTitle ?? post.title,
+    description: post.seo?.metaDescription ?? post.excerpt,
     alternates: {
       canonical: `/blog/${params.slug}`,
     },
     openGraph: {
-      title: post.seo?.metaTitle || post.title,
-      description: post.seo?.metaDescription || post.excerpt,
+      title: post.seo?.metaTitle ?? post.title,
+      description: post.seo?.metaDescription ?? post.excerpt,
       type: "article",
       images: post.mainImage
         ? [
@@ -68,7 +66,9 @@ export async function generateMetadata(
 /* =========================
    PAGE
    ========================= */
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function BlogPostPage(
+  { params }: { params: { slug: string } }
+) {
   const post = await sanityFetch<Post | null>({
     query: POST_BY_SLUG_QUERY,
     params: { slug: params.slug },
@@ -80,6 +80,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     ? urlFor(post.mainImage).width(1600).height(900).url()
     : null;
 
+  // Reading time calculation
   const plainText =
     post.body
       ?.map((block) =>
