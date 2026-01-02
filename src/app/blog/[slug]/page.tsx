@@ -14,7 +14,7 @@ import { calculateReadingTime } from "@/lib/readingTime";
 import FadeUp from "@/components/motion/FadeUp";
 
 /* =========================
-   DATA TYPES
+   TYPES
    ========================= */
 
 type Post = {
@@ -30,14 +30,16 @@ type Post = {
 };
 
 /* =========================
-   SEO METADATA
+   SEO METADATA (NEXT 15 FIX)
    ========================= */
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  props: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
+  const { slug } = await props.params;
+
   const post = await sanityFetch<Post | null>({
     query: POST_BY_SLUG_QUERY,
-    params: { slug: params.slug },
+    params: { slug },
   });
 
   if (!post) return {};
@@ -46,7 +48,7 @@ export async function generateMetadata(
     title: post.seo?.metaTitle ?? post.title,
     description: post.seo?.metaDescription ?? post.excerpt,
     alternates: {
-      canonical: `/blog/${params.slug}`,
+      canonical: `/blog/${slug}`,
     },
     openGraph: {
       title: post.seo?.metaTitle ?? post.title,
@@ -80,7 +82,6 @@ export default async function BlogPostPage(
     ? urlFor(post.mainImage).width(1600).height(900).url()
     : null;
 
-  // Reading time calculation
   const plainText =
     post.body
       ?.map((block) =>
@@ -101,20 +102,18 @@ export default async function BlogPostPage(
     <main className="w-full bg-[var(--color-beige)]">
       <article className="mx-auto max-w-[1027px] px-6 lg:px-0 py-24">
 
-        {/* Breadcrumb */}
         <FadeUp>
           <div className="flex items-center gap-4">
-            <span className="text-[12px] tracking-wide text-[var(--color-brand-brown)] whitespace-nowrap">
+            <span className="text-[12px] tracking-wide text-[var(--color-brand-brown)]">
               Blog / Journal
             </span>
             <span className="h-px flex-1 bg-[var(--color-brand-brown)]/30" />
           </div>
         </FadeUp>
 
-        {/* Featured Image */}
         {imageUrl && (
           <FadeUp delay={0.1}>
-            <div className="relative mt-10 h-[420px] w-full overflow-hidden rounded-[12px]">
+            <div className="relative mt-10 h-[420px] rounded-[12px] overflow-hidden">
               <Image
                 src={imageUrl}
                 alt={post.title}
@@ -126,7 +125,6 @@ export default async function BlogPostPage(
           </FadeUp>
         )}
 
-        {/* Header */}
         <FadeUp delay={0.15}>
           {post.publishedAt && (
             <p className="mt-6 text-[14px] text-[var(--color-ink)]/60">
@@ -144,7 +142,6 @@ export default async function BlogPostPage(
           </h1>
         </FadeUp>
 
-        {/* Content */}
         <FadeUp delay={0.25}>
           <div className="mt-14">
             <PortableText
@@ -154,11 +151,9 @@ export default async function BlogPostPage(
           </div>
         </FadeUp>
 
-        {/* Fixed Callout */}
         <FadeUp delay={0.35}>
           <div className="mt-20 rounded-[8px] bg-[var(--color-brand-brown)] px-10 py-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
-
               <div className="max-w-[640px]">
                 <h3 className="text-[22px] font-semibold text-white">
                   Considering your own design journey?
@@ -170,7 +165,7 @@ export default async function BlogPostPage(
 
               <a
                 href="/call-to-action"
-                className="inline-flex items-center whitespace-nowrap rounded-[6px] bg-white px-6 py-2.5 text-[14px] font-medium text-[var(--color-brand-brown)] transition-opacity hover:opacity-85"
+                className="inline-flex items-center rounded-[6px] bg-white px-6 py-2.5 text-[14px] font-medium text-[var(--color-brand-brown)] hover:opacity-85"
               >
                 Start a Journey
               </a>
