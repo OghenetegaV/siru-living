@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Head from "next/head";
-import type { Image as SanityImage, PortableTextBlock } from "sanity";
+// import type { Image as SanityImage, PortableTextBlock } from "sanity";
 
 import { PortableText } from "@portabletext/react";
 
@@ -17,22 +17,22 @@ import FadeUp from "@/components/motion/FadeUp";
    TYPES
    ========================= */
 
-type Post = {
-  title: string;
-  excerpt?: string;
-  publishedAt?: string;
-  mainImage?: SanityImage;
-  body?: PortableTextBlock[];
-  seo?: {
-    metaTitle?: string;
-    metaDescription?: string;
-  };
-};
+// type Post = {
+//   title: string;
+//   excerpt?: string;
+//   publishedAt?: string;
+//   mainImage?: SanityImage;
+//   body?: PortableTextBlock[];
+//   seo?: {
+//     metaTitle?: string;
+//     metaDescription?: string;
+//   };
+// };
 
 export default async function BlogPostPage(
   { params }: { params: { slug: string } }
 ) {
-  const post = await sanityFetch<Post | null>({
+  const post = await sanityFetch<any>({
     query: POST_BY_SLUG_QUERY,
     params: { slug: params.slug },
   });
